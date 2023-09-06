@@ -5,3 +5,17 @@ Rock-Paper-Scissors is a game in which each player simultaneously shows one of t
 The player who shows the first option that beats the other player's option wins.
 
 This is an implementation of an interactive Rock-Paper-Scissors game, in which the user can play with the computer using the camera.
+
+## Table of Contents, if the README file is long
+
+## A description of the project: what it does, the aim of the project, and what you learned
+
+## Installation instructions
+
+## Usage instructions
+
+## File structure of the project
+
+## License information
+
+This project is licensed under the MIT License - see the LICENSE.txt file for details.
