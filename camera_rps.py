@@ -10,13 +10,9 @@ class_names = open("labels.txt", "r").readlines()
 
 class RockPaperScissors:
 
-
     def __init__(self):
-        #self.user_choice = user_choice
-        #self.computer_choice = computer_choice
         self.user_wins = 0
         self.computer_wins = 0
-
 
     def countdown_timer(self):
 
@@ -32,7 +28,6 @@ class RockPaperScissors:
         if remaining_time > 0:
             print(f"Countdown: {int(remaining_time)} seconds", end='\r')
         
-
     def get_prediction(self):
 
         ret, frame = cap.read()
@@ -43,7 +38,6 @@ class RockPaperScissors:
         prediction = model.predict(data)
         cv2.imshow('frame', frame)
         return prediction
-
 
     def convert_prediction_to_human_readable_prediction(self, prediction):
                                          
@@ -64,7 +58,6 @@ class RockPaperScissors:
         
         return user_choice
 
-
     def get_computer_choice(self):
     
         game_choices = ["Rock", "Paper", "Scissors"]
@@ -73,7 +66,6 @@ class RockPaperScissors:
 
         return computer_choice
     
-
     def get_winner(self, user_choice, computer_choice):
 
         if user_choice == computer_choice:
@@ -92,7 +84,6 @@ class RockPaperScissors:
             self.computer_wins += 1
             
         return self.computer_wins, self.user_wins
-
 
     def play(self):
 
@@ -118,21 +109,11 @@ class RockPaperScissors:
         # Destroy all the windows
         cv2.destroyAllWindows() 
 
-    
     def __call__(self):
         self.play()
-
 
 rock_paper_scissors_game = RockPaperScissors()
 rock_paper_scissors_game()
 
 
-"""
-THis needs to go in the get prediction method
-else:
-            print(f"You chose:", end=" ")
-            user_choice = get_prediction(prediction)
-            break
-            
-        """
 
