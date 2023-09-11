@@ -41,11 +41,11 @@ I also experimented with some new technology - "Teachable Machine", and learned 
 
 ## Usage instructions
 
-### Manual version
+### Manual version (manual_rps.py)
 1. The user is asked to input either rock, paper, or scissors.
 2. The code will compare this with a random choice from the computer and display who wins.
 
-### Interactive camera version
+### Interactive camera version (camera_rps.py)
 1. The terminal will display a 3-second countdown timer, during this time the user should hold up a hand signal of either rock, paper, or scissors.
 2. The camera will open and record this hand signal.
 3. The terminal will display, in text, what hand signal the user chose.
