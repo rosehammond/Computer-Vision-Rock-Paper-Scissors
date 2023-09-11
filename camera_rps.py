@@ -26,15 +26,14 @@ class RockPaperScissors:
         
     def get_prediction(self):
 
-        while True:
-            ret, frame = cap.read()
-            resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
-            image_np = np.array(resized_frame)
-            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
-            data[0] = normalized_image
-            prediction = model.predict(data)
-            cv2.imshow('frame', frame)
-            return prediction
+        ret, frame = cap.read()
+        resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
+        image_np = np.array(resized_frame)
+        normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
+        data[0] = normalized_image
+        prediction = model.predict(data)
+        cv2.imshow('frame', frame)
+        return prediction
 
     def convert_prediction_to_human_readable_prediction(self, prediction):
                                          
@@ -83,17 +82,22 @@ class RockPaperScissors:
         return self.computer_wins, self.user_wins
 
     def play(self):
-    # camera opens after first round and stays open the rest of the game, 
-    # pauses 2 secondss between rounds, seems like there is a delay on camera movement, maybe computer issus?
+
+        global cap
         while self.computer_wins < 3 and self.user_wins < 3:
             self.countdown_timer()
+            cap = cv2.VideoCapture(0)
             prediction = self.get_prediction()
             user_choice = self.convert_prediction_to_human_readable_prediction(prediction)
             computer_choice = self.get_computer_choice()
             computer_wins, user_wins = self.get_winner(user_choice, computer_choice)
+            
+            cv2.waitKey(1)  # Update the OpenCV window
+            cap.release()
+            cv2.destroyAllWindows()
 
-            print("Next round will start in 2 seconds.")
-            time.sleep(2)
+            print("Next round will start in 5 seconds.")
+            time.sleep(5)
 
             if computer_wins == 3:
                 print(f"The computer won {computer_wins} games to {user_wins}")
@@ -115,6 +119,3 @@ class RockPaperScissors:
 
 rock_paper_scissors_game = RockPaperScissors()
 rock_paper_scissors_game()
-
-
-
