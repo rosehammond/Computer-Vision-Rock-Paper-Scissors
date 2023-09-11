@@ -17,27 +17,24 @@ class RockPaperScissors:
     def countdown_timer(self):
 
         countdown_duration = 3
-        start_time = None
 
-        if start_time is None:
-            start_time = time.time()
+        for remaining_time in range(countdown_duration, 0, -1):
+            print(f"Countdown: {remaining_time} seconds", end='\r')
+            time.sleep(1)  # Pause for 1 second
 
-        remaining_time = countdown_duration - (time.time() - start_time)
-
-        # Print the countdown timer
-        if remaining_time > 0:
-            print(f"Countdown: {int(remaining_time)} seconds", end='\r')
+        print("Countdown: 0 seconds")
         
     def get_prediction(self):
 
-        ret, frame = cap.read()
-        resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
-        image_np = np.array(resized_frame)
-        normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
-        data[0] = normalized_image
-        prediction = model.predict(data)
-        cv2.imshow('frame', frame)
-        return prediction
+        while True:
+            ret, frame = cap.read()
+            resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
+            image_np = np.array(resized_frame)
+            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
+            data[0] = normalized_image
+            prediction = model.predict(data)
+            cv2.imshow('frame', frame)
+            return prediction
 
     def convert_prediction_to_human_readable_prediction(self, prediction):
                                          
@@ -86,13 +83,17 @@ class RockPaperScissors:
         return self.computer_wins, self.user_wins
 
     def play(self):
-
+    # camera opens after first round and stays open the rest of the game, 
+    # pauses 2 secondss between rounds, seems like there is a delay on camera movement, maybe computer issus?
         while self.computer_wins < 3 and self.user_wins < 3:
             self.countdown_timer()
             prediction = self.get_prediction()
             user_choice = self.convert_prediction_to_human_readable_prediction(prediction)
             computer_choice = self.get_computer_choice()
             computer_wins, user_wins = self.get_winner(user_choice, computer_choice)
+
+            print("Next round will start in 2 seconds.")
+            time.sleep(2)
 
             if computer_wins == 3:
                 print(f"The computer won {computer_wins} games to {user_wins}")
