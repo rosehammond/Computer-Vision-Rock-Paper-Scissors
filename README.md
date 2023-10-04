@@ -51,21 +51,21 @@ I also experimented with some new technology - "Teachable Machine", and learned 
 
 ## File structure of the project
 
-- camera_rps.py contains the Python code for this game.
-- keras_model.h5 created using Teachable Machine to predict what hand signal the user is holding up
-- labels.txt labels for the different hand signals
-- requirements.txt all the dependencies for the game, can be installed using the command *pip install -r requirements.txt*
+- **camera_rps.py** contains the Python code for this game.
+- **keras_model.h5** created using Teachable Machine to predict what hand signal the user is holding up
+- **labels.txt** labels for the different hand signals
+- **requirements.txt** all the dependencies for the game, can be installed using the command *pip install -r requirements.txt*
 
 
 ## Code Structure
 
 - ``` RockPaperScissors(): ``` Class which includes all the attributes and methods for the game
-- countown_timer(): Method to display a 3-second countdown timer
-- get_prediction(): Method to open the camera and take a frame of the user's hand signal
-- convert_prediction_to_human_readable_prediction(prediction): Method to convert the frame image into text
-- get_computer_choice(): Method to allow the computer to randomly select an option
-- get_winner(user_choice, computer_choice): Method to compare the user choice to the computer choice, display the winner, and add 1 point to either the user or computer (or no points if it is a tie) 
-- play(): Method to code the logic of the game, allowing the game to play more rounds until either the user or computer wins 3 times. The overall winner is then revealed.
+- ``` countown_timer(): ``` Method to display a 3-second countdown timer
+- ``` get_prediction(): ``` Method to open the camera and take a frame of the user's hand signal
+- ``` convert_prediction_to_human_readable_prediction(prediction): ``` Method to convert the frame image into text
+- ``` get_computer_choice(): ``` Method to allow the computer to randomly select an option
+- ``` get_winner(user_choice, computer_choice): ``` Method to compare the user choice to the computer choice, display the winner, and add 1 point to either the user or computer (or no points if it is a tie) 
+- ``` play(): ``` Method to code the logic of the game, allowing the game to play more rounds until either the user or computer wins 3 times. The overall winner is then revealed.
 
 
 ## License information
