@@ -35,17 +35,11 @@ I also experimented with some new technology - "Teachable Machine", and learned 
 
 1. Clone the repository to your local machine: git clone https://github.com/rosehammond/computer-vision-rock-paper-scissors.git
 2. Navigate to the project directory in your terminal
-3. To run the manual version use the following command: python manual_rps.py
-4. To run the interactive camera version use the following command: python camera_rps.py
+3. To run the interactive camera version use the following command: *python camera_rps.py*
 
 
 ## Usage instructions
 
-### Manual version (manual_rps.py)
-1. The user is asked to input either rock, paper, or scissors.
-2. The code will compare this with a random choice from the computer and display who wins.
-
-### Interactive camera version (camera_rps.py)
 1. The terminal will display a 3-second countdown timer, during this time the user should hold up a hand signal of either rock, paper, or scissors.
 2. The camera will open and record this hand signal.
 3. The terminal will display, in text, what hand signal the user chose.
@@ -57,17 +51,15 @@ I also experimented with some new technology - "Teachable Machine", and learned 
 
 ## File structure of the project
 
-### Manual version
-- manual_rps.py: contains the Python code for this game.
-- The game consists of four main functions:
-- get_computer_choice(): This function randomly selects the computer's choice from Rock, Paper, or Scissors.
-- get_user_choice(): This function prompts the user to input their choice and validates that the input is one of the choices (Rock, Paper, or Scissors).
-- get_winner(user_choice, computer_choice): This function determines the winner based on the choices made by the user and the computer. It checks for ties and winning conditions.
-- play(): This function orchestrates the entire game by calling the above functions and displaying the outcome.
+- camera_rps.py contains the Python code for this game.
+- keras_model.h5 created using Teachable Machine to predict what hand signal the user is holding up
+- labels.txt labels for the different hand signals
+- requirements.txt all the dependencies for the game, can be installed using the command *pip install -r requirements.txt*
 
-### Interactive version
-- camera_rps.py: contains the Python code for this game.
-- RockPaperScissors(): Class which includes all the attributes and methods for the game
+
+## Code Structure
+
+- ``` RockPaperScissors(): ``` Class which includes all the attributes and methods for the game
 - countown_timer(): Method to display a 3-second countdown timer
 - get_prediction(): Method to open the camera and take a frame of the user's hand signal
 - convert_prediction_to_human_readable_prediction(prediction): Method to convert the frame image into text
