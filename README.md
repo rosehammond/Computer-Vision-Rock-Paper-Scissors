@@ -7,7 +7,8 @@
 - Technologies utilised
 - Installation instructions
 - Usage instructions
-- File structure
+- File structure of the project
+- Code structure
 - License information
 
 
